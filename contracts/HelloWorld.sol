@@ -3,10 +3,14 @@
 pragma solidity ^0.6.12;
 
 contract HelloWorld {
-    string public greet = "Hello World!";
+    string public greet;
+
+    function addNewGreetMessage(string memory newMessage) public returns (string memory _greeet) {
+        greet = newMessage;
+        return greet;
+    }
 
     function getGreetMessage() public view returns (string memory _greeet) {
         return greet;
     }
-    
 }
