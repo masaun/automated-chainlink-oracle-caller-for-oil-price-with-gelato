@@ -12,6 +12,12 @@ import { GelatoBytes } from "@gelatonetwork/core/contracts/libraries/GelatoBytes
 contract ActionHelloWorld is GelatoActionsStandard {
     string public greet;
 
+    HelloWorld public immutable helloWorld;
+    
+    constructor(HelloWorld _helloWorld) public { 
+        helloWorld = _helloWorld; 
+    }
+
     function addNewGreetMessage(string memory newMessage) public returns (string memory _greeet) {
         greet = newMessage;
         return greet;
