@@ -28,6 +28,9 @@
   "author": "masaun",
   "license": "MIT",
   "dependencies": {
+    "@gelatonetwork/core": "0.5.3",
+    "@gelatonetwork/gelato-user-proxy": "1.0.0",
+    
     "@openzeppelin/contracts": "^3.1.0",
     "@truffle/hdwallet-provider": "^1.0.29",
     "dotenv": "^8.2.0",
