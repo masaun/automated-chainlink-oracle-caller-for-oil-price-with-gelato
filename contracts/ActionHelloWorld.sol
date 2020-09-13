@@ -13,17 +13,25 @@ contract ActionHelloWorld is GelatoActionsStandard {
     string public greet;
 
     HelloWorld public immutable helloWorld;
-    
+
     constructor(HelloWorld _helloWorld) public { 
         helloWorld = _helloWorld; 
     }
 
-    function addNewGreetMessage(string memory newMessage) public returns (string memory _greeet) {
-        greet = newMessage;
-        return greet;
+    // ======= ACTION IMPLEMENTATION DETAILS =========
+    /// @dev Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)
+    function action(string memory newMessage)
+        public
+        virtual
+        delegatecallOnly("ActionHelloWorld.action")
+    {
+        try helloWorld.addNewGreetMessage(newMessage) {
+        } catch Error(string memory error) {
+            revert(string(abi.encodePacked("ActionHelloWorld.action.addNewGreetMessage:", error)));
+        } catch {
+            revert("ActionHelloWorld.action.addNewGreetMessage: unknown error");
+        }
     }
 
-    function getGreetMessage() public view returns (string memory _greeet) {
-        return greet;
-    }
+
 }
