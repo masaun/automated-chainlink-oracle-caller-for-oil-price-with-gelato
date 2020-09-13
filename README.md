@@ -16,30 +16,22 @@
 
 ## 【Setup】
 ### Setup wallet by using Metamask
-1. Add MetaMask to browser (Chrome or FireFox or Opera or Brave)    
-https://metamask.io/  
-
-
-2. Run ganache-cli
+1. Run ganache-cli
 ```
 $ ganache-cli -d
 ```
 
-3. Migrate
+2. Migrate
 ```
 $ npm run migrate:local
 ```
 
-or
-
-
-3. Adjust appropriate newwork below 
-```
-Kovan Test Network
-```
-
 &nbsp;
 
+## 【Test】
+```
+$ npm run test:local
+```
 
 
 ***

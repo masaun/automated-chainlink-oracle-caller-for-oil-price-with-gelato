@@ -7,7 +7,7 @@ contract("ActionHelloWorld", function(accounts) {
     /***
      * @notice - Global variable
      **/
-    const actionHelloWorld;
+    let actionHelloWorld;
 
     /***
      * @notice - Setup
