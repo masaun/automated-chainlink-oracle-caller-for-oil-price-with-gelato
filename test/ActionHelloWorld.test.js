@@ -21,4 +21,13 @@ contract("ActionHelloWorld", function(accounts) {
         console.log('=== actionHelloWorld ===', actionHelloWorld);
     });
 
+    describe("Action via Gelato🍦", () => {
+        it('Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)', async () => {
+            const newMessage = 'Hello!!'
+
+            const res1 = await actionHelloWorld.action(newMessage);
+            console.log('=== addNewGreetMessage ===', res1);
+        });
+    });    
+
 });
