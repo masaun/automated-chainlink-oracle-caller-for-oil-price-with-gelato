@@ -23,7 +23,7 @@ const SELF_PROVIDER_GAS_LIMIT = 6000000; // 6 mio gas
 
 // This is the gelatoGasPrice that we want to be the trigger for our
 // automatic CHI minting => we set it to half of the initial gas price
-const TRIGGER_GAS_PRICE = GELATO_GAS_PRICE_START.div("2");
+const TRIGGER_GAS_PRICE = GELATO_GAS_PRICE_START / 2;
 
 
 contract("ActionHelloWorld", function(accounts) {
@@ -51,6 +51,37 @@ contract("ActionHelloWorld", function(accounts) {
             const newMessage = 'Hello!!'
 
             /// [In progress]: https://gelato.network/
+
+            /// Define a Condition => When the transaction should execute
+            const condition = new GelatoCoreLib.Condition({
+                inst: actionHelloWorld.address,             // condition address
+                data: await actionHelloWorld.action(newMessage),  // e.g. every 5 minutes
+            });
+
+            /// Define an action => What that transaction should do
+            const action = new GelatoCoreLib.Action({
+                addr: actionHelloWorld.address,                   // action address
+                data: await actionHelloWorld.action(newMessage),  // data defining trade
+                operation: Operation.Delegatecall
+            });
+
+            /// Combine condition + action to a task
+            const task = new GelatoCoreLib.Task({
+                conditions: [condition],
+                actions: [action]
+            });
+
+            // Define who will pay for the transaction,
+            /// the user directly or the developer
+            const gelatoProvider = new GelatoCoreLib.GelatoProvider({
+                addr: provider.address,
+                module: gelatoUserProxyProviderModule.address,
+            });
+
+            /// Submit transaction to gelato and it will
+            /// be executed when the condition is fulfilled
+            await gelatoCore.submitTask(gelatoProvider, task, 0)
+
         });
     }); 
 
