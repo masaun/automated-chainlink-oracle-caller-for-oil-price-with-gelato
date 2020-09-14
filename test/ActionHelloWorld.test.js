@@ -1,12 +1,21 @@
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
+/// Builder and ether.js
+//const bre = require("@nomiclabs/buidler");
+//const ethers = bre.ethers;
+//const { utils } = require("ethers");
+
 /// Gelato
 const GelatoCoreLib = require("@gelatonetwork/core");
+const GelatoUserProxyLib = require("@gelatonetwork/gelato-user-proxy");
 
 /// My contract
 const ActionHelloWorld = artifacts.require("ActionHelloWorld");
 
+
+// GelatoGasPriceOracle setup vars
+const GELATO_GAS_PRICE_START = ethers.utils.parseUnits("80", "gwei");
 
 // The gas limit for our automated CHI.mint TX
 // ActionChiMint caps chiAmount to 140 CHI => 6 mio gas should always suffice
