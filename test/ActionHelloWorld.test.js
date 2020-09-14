@@ -15,7 +15,7 @@ const ActionHelloWorld = artifacts.require("ActionHelloWorld");
 
 
 // GelatoGasPriceOracle setup vars
-const GELATO_GAS_PRICE_START = ethers.utils.parseUnits("80", "gwei");
+const GELATO_GAS_PRICE_START = web3.utils.toWei('80', 'ether');
 
 // The gas limit for our automated CHI.mint TX
 // ActionChiMint caps chiAmount to 140 CHI => 6 mio gas should always suffice
@@ -43,6 +43,18 @@ contract("ActionHelloWorld", function(accounts) {
 
         console.log('=== actionHelloWorld ===', actionHelloWorld);
     });
+
+
+    /* Website: https://gelato.network/  */
+    describe("Action via Gelato🍦 from Website", () => {
+        it('Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)', async () => {
+            const newMessage = 'Hello!!'
+
+            /// [In progress]: https://gelato.network/
+        });
+    }); 
+
+
 
     describe("Action via Gelato🍦", () => {
         it('Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)', async () => {
