@@ -30,6 +30,7 @@
   "dependencies": {
     "@gelatonetwork/core": "0.5.3",
     "@gelatonetwork/gelato-user-proxy": "1.0.0",
+    "@nomiclabs/buidler": "^1.4.7",
     "ethers": "5.0.14",
     "@openzeppelin/contracts": "^3.1.0",
     "@truffle/hdwallet-provider": "^1.0.29",

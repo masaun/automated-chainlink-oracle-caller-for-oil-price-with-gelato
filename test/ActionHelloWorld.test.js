@@ -2,9 +2,9 @@ const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
 /// Builder and ether.js
-//const bre = require("@nomiclabs/buidler");
-//const ethers = bre.ethers;
-//const { utils } = require("ethers");
+const bre = require("@nomiclabs/buidler");
+const ethers = bre.ethers;
+const { utils } = require("ethers");
 
 /// Gelato
 const GelatoCoreLib = require("@gelatonetwork/core");
@@ -84,36 +84,5 @@ contract("ActionHelloWorld", function(accounts) {
 
         });
     }); 
-
-
-
-    describe("Action via Gelato🍦", () => {
-        it('Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)', async () => {
-            const newMessage = 'Hello!!'
-
-            // Specify and Instantiate the Gelato Task
-            taskAutoAddMessageWhenTriggerGasPrice = new GelatoCoreLib.Task({
-              actions: [
-                new GelatoCoreLib.Action({
-                  addr: actionHelloWorld.address,
-                  data: await actionHelloWorld.action(newMessage),
-                  operation: GelatoCoreLib.Operation.Delegatecall,
-                  termsOkCheck: false,
-                }),
-              ],
-              selfProviderGasLimit: SELF_PROVIDER_GAS_LIMIT,
-              // This makes sure we only mint CHI when the gelatoGasPrice is at or below
-              // our desired trigger gas price
-              selfProviderGasPriceCeil: TRIGGER_GAS_PRICE,
-            });
-        });
-
-        it('Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)', async () => {
-            const newMessage = 'Hello!!'
-
-            const res1 = await actionHelloWorld.action(newMessage);
-            console.log('=== addNewGreetMessage ===', res1);
-        });
-    });    
 
 });
