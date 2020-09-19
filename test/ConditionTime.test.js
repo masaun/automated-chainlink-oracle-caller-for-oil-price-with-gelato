@@ -1,4 +1,4 @@
-const ethers = require("ethers");
+const ethers = require("ethers");  /// [Notice]: ethers.js version must be more thant v5.0.0
 const GelatoCoreLib = require("@gelatonetwork/core");
 
 /// My contract
@@ -8,7 +8,7 @@ const conditionAddress = ConditionTime.address;
 //const conditionAddress = "0x63129681c487d231aa9148e1e21837165f38deaf"
 const conditionAbi = ConditionTime.abi;
 //const conditionAbi = ["function timeCheck(uint256 _timestamp) view returns(string memory)"]
-const iFace = new ethers.utils.Interface(conditionAbi)
+const iFace = new ethers.utils.Interface(conditionAbi)    /// [Notice]: ethers.js version must be more thant v5.0.0
 const futureTimestamp = 1599800000
 
 
