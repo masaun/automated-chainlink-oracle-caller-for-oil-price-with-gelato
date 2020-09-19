@@ -41,7 +41,7 @@ $ npm run test:local
   - Document：  
     https://docs.gelato.network/creating-an-automated-dapp  
 
-  - Document (Contract address on Rinkeby testnet)
+  - Document (Contract address on Rinkeby testnet)  
     https://docs.gelato.network/contract-addresses
 
   - Sample dApp：  

@@ -25,7 +25,7 @@ contract ActionHelloWorld is GelatoActionsStandard {
         virtual
         delegatecallOnly("ActionHelloWorld.action")
     {
-        try helloWorld.addNewGreetMessage(newMessage) {
+        try helloWorld.addNewGreetMessage(newMessage) { 
         } catch Error(string memory error) {
             revert(string(abi.encodePacked("ActionHelloWorld.action.addNewGreetMessage:", error)));
         } catch {

@@ -11,13 +11,10 @@ const conditionAbi = ConditionTime.abi;
 const iFace = new ethers.utils.Interface(conditionAbi)    /// [Notice]: ethers.js version must be more thant v5.0.0
 const futureTimestamp = 1599800000
 
-
 /// Log
 console.log('=== conditionAddress ===', conditionAddress);
 console.log('=== conditionAbi ===', conditionAbi);
 console.log('=== iFace ===', iFace);
-
-
 
 /// #### Create the condition object
 const condition = new GelatoCoreLib.Condition({
