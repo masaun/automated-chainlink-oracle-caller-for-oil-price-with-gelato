@@ -19,11 +19,13 @@ console.log('=== iFace ===', iFace);
 
 
 
-// #### Create the condition object
-
+/// #### Create the condition object
 const condition = new GelatoCoreLib.Condition({
     inst: conditionAddress,
     data: iFace.encodeFunctionData("timeCheck", [
         futureTimestamp
     ]),
 })
+
+
+

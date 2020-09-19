@@ -41,6 +41,9 @@ $ npm run test:local
   - Document：  
     https://docs.gelato.network/creating-an-automated-dapp  
 
+  - Document (Contract address on Rinkeby testnet)
+    https://docs.gelato.network/contract-addresses
+
   - Sample dApp：  
     https://gnosis.gelato.exchange  
     （ https://medium.com/@gelatonetwork/walkthrough-automatically-swapping-erc20-tokens-on-gnosis-protocol-4166ec8b263e ）
