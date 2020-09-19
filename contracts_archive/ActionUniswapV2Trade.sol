@@ -1,11 +1,23 @@
-pragma solidity =0.6.6;
+// "SPDX-License-Identifier: UNLICENSED"
+pragma solidity ^0.6.10;
+
+import {IGelatoInFlowAction} from "../action_pipeline_interfaces/IGelatoInFlowAction.sol";
+import {GelatoActionsStandard} from "../GelatoActionsStandard.sol";
+import {DataFlow} from "../../gelato_core/interfaces/IGelatoCore.sol";
+import {GelatoBytes} from "../../libraries/GelatoBytes.sol";
+import {SafeERC20} from "../../external/SafeERC20.sol";
+import {SafeMath} from "../../external/SafeMath.sol";
+import {IERC20} from "../../external/IERC20.sol";
+import {Address} from "../../external/Address.sol";
+
+import {IUniswapV2Router02, IUniswapV2Factory, IWETH} from "../../dapp_interfaces/uniswap_v2/IUniswapV2.sol";
 
 /***
  * @notice - This is a sample code in Gelato: https://docs.gelato.network/creating-an-automated-dapp
  * @notice - This is simplified version
- * @notice - Full code is here: https://github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/UniswapV2Router02.sol  
+ * @notice - Full code is here: https://github.com/gelatodigital/gelato-network/blob/master/contracts/gelato_actions/uniswap_v2/ActionUniswapV2Trade.sol
  **/
-contract ActionUniswapV2Trade {
+contract ActionUniswapV2Trade is GelatoActionsStandard, IGelatoInFlowAction {
 
     ... 
     
@@ -19,7 +31,7 @@ contract ActionUniswapV2Trade {
     )
         public
         virtual
-        delegatecallOnly("ActionKyberTrade.action")
+        delegatecallOnly("ActionKyberTrade.action")   /// [Note]: Delegate call
     {
         address receiver = _receiver == address(0) ? address(this) : _receiver;
 
