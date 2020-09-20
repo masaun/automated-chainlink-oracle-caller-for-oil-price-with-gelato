@@ -1,29 +1,9 @@
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
-/// Builder and ether.js
 const bre = require("@nomiclabs/buidler");
-const ethers = bre.ethers;
-const { utils } = require("ethers");
-
-/// Gelato
+const { ethers } = bre;
 const GelatoCoreLib = require("@gelatonetwork/core");
-const GelatoUserProxyLib = require("@gelatonetwork/gelato-user-proxy");
-
-/// My contract
-const ActionHelloWorld = artifacts.require("ActionHelloWorld");
-
-
-// GelatoGasPriceOracle setup vars
-const GELATO_GAS_PRICE_START = web3.utils.toWei('80', 'ether');
-
-// The gas limit for our automated CHI.mint TX
-// ActionChiMint caps chiAmount to 140 CHI => 6 mio gas should always suffice
-const SELF_PROVIDER_GAS_LIMIT = 6000000; // 6 mio gas
-
-// This is the gelatoGasPrice that we want to be the trigger for our
-// automatic CHI minting => we set it to half of the initial gas price
-const TRIGGER_GAS_PRICE = GELATO_GAS_PRICE_START / 2;
 
 
 contract("ActionHelloWorld", function(accounts) {
@@ -68,14 +48,20 @@ contract("ActionHelloWorld", function(accounts) {
             /// Combine condition + action to a task
             const task = new GelatoCoreLib.Task({
                 conditions: [condition],
-                actions: [action]
+                actions: [action],
+                selfProviderGasLimit: 0,
+                selfProviderGasPriceCeil: 0
             });
 
             // Define who will pay for the transaction,
+            // Gelato User Proxy
+            const gelatoUserProxyAddress = accounts[0] // "YOUR_PROXY_ADDRESS"
+            const _providerModuleGelatoUserProxy = providerModuleGelatoUserProxy.address /// Contract address of ProviderModuleGelatoUserProxy.sol
+
             /// the user directly or the developer
             const gelatoProvider = new GelatoCoreLib.GelatoProvider({
-                addr: provider.address,
-                module: gelatoUserProxyProviderModule.address,
+                addr: gelatoUserProxyAddress,
+                module: _providerModuleGelatoUserProxy,
             });
 
             /// Submit transaction to gelato and it will
