@@ -37,11 +37,20 @@ $ npm run test:local
 ***
 
 ## 【References】
+- [Chainlink💹]
+  - Price Feed (Sample code)  
+    https://docs.chain.link/docs/get-the-latest-price  
+  
+  - Contract Address (Rinkeby): `Oil/USD`  
+    https://docs.chain.link/docs/reference-contracts#rinkeby  
+
+<br>
+
 - [Gelato🍦]:
   - Document：  
     https://docs.gelato.network/creating-an-automated-dapp  
 
-  - Document (Contract address on Rinkeby testnet)
+  - Document (Contract address on Rinkeby testnet)  
     https://docs.gelato.network/contract-addresses
 
   - Sample dApp：  
