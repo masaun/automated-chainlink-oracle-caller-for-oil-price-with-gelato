@@ -46,7 +46,7 @@ $ npm run test:rinkeby-oil
 ***
 
 ## 【References】
-- [Chainlink💹]
+- [Chainlink 💹]
   - Price Feed (Sample code)  
     https://docs.chain.link/docs/get-the-latest-price  
   
