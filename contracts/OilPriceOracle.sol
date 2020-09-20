@@ -9,7 +9,7 @@ contract OilPriceOracle {
     AggregatorV3Interface internal priceFeed;
 
     /**
-     * Network: Kovan
+     * Network: Rinkeby
      * Aggregator: ETH/USD
      * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
      */
