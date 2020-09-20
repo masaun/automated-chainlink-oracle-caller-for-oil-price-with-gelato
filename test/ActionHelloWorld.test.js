@@ -32,7 +32,7 @@ contract("ActionHelloWorld", function(accounts) {
 
     /* Website: https://gelato.network/  */
     describe("Action via Gelato🍦 from Website", () => {
-        it('Call HelloWorld.addNewGreetMessage via UserProxy (Delegatecall)', async () => {
+        it('Call HelloWorld.addNewGreetMessage via UserProxy (Using .Call)', async () => {
             const newMessage = 'Hello!!'
 
             /// [In progress]: https://gelato.network/
@@ -59,16 +59,26 @@ contract("ActionHelloWorld", function(accounts) {
                 selfProviderGasPriceCeil: 0
             });
 
+            // Assign contract address of GelatoUserProxy.sol and ProviderModuleGelatoUserProxy.sol
             // Define who will pay for the transaction,
             // Gelato User Proxy
-            const gelatoUserProxyAddress = GelatoUserProxy.address  /// ContractAddress
-            const providerModuleGelatoUserProxy = ProviderModuleGelatoUserProxy.address  /// ContractAddress
+            const gelatoUserProxyAddress = GelatoUserProxy.address
+            const providerModuleGelatoUserProxy = ProviderModuleGelatoUserProxy.address
 
-            /// the user directly or the developer
+
+
+
+
+            /************************************************************************************
+             * Error "Provider: no string addr passed to constructor " has been happening below.
+             ************************************************************************************/
+
+            /// the user directly or the developer <-- This code is row which error has been happening
+            // Gelato provider object
             const gelatoProvider = new GelatoCoreLib.GelatoProvider({
                 addr: gelatoUserProxyAddress,
-                module: providerModuleGelatoUserProxy,
-            });
+                module: providerModuleGelatoUserProxy
+            })
 
             const gelatoUserProxy = await ethers.getContractAt(
                                         GelatoCoreLib.GelatoUserProxy.abi,
@@ -78,7 +88,6 @@ contract("ActionHelloWorld", function(accounts) {
             /// Submit transaction to gelato and it will
             /// be executed when the condition is fulfilled
             await gelatoUserProxy.submitTask(gelatoProvider, task, 0)  // [Note]: Submit one-time task
-
         });
     }); 
 
