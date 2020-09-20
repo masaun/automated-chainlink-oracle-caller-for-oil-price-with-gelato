@@ -1,10 +1,8 @@
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
-const bre = require("@nomiclabs/buidler");
-const { ethers } = bre;
+const ethers = require("ethers");  /// [Notice]: ethers.js version must be more thant v5.0.0
 const GelatoCoreLib = require("@gelatonetwork/core");
-
 
 contract("ActionHelloWorld", function(accounts) {
     /***
