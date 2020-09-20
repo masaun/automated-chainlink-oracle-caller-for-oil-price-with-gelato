@@ -14,17 +14,24 @@ const oilPriceOracle = new web3.eth.Contract(oilPriceOracleABI, oilPriceOracleAd
 
 async function callTx() {
     async function getLatestPrice() {
-        let roundData = await oilPriceOracle.methods.getLatestPrice().call();
-        console.log("Latest Round Data", roundData);
+        let roundData;
+        try {
+            roundData = await oilPriceOracle.methods.getLatestPrice().call();
+            console.log("=== Latest Round Data 1 ===", roundData);
+        } catch(e) {
+            console.log('=== e ===', e);
+            return String(e);
+        }
 
         return roundData;
     }
 
-    let roundData = await getLatestPrice();
+    let _roundData = await getLatestPrice();
+    return _roundData;
 }
 
-callTx()
-
+let roundData = callTx()
+console.log("=== Latest Round Data 2 ===", roundData);
 
 // oilPriceOracle.methods.getLatestPrice().call()
 //     .then((roundData) => {
