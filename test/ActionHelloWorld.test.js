@@ -8,6 +8,8 @@ const ActionHelloWorld = artifacts.require("ActionHelloWorld");
 const ethers = require("ethers");  /// [Notice]: ethers.js version must be more thant v5.0.0
 const GelatoCoreLib = require("@gelatonetwork/core");
 const ProviderModuleGelatoUserProxy = require("@gelatonetwork/gelato-user-proxy");
+const GelatoUserProxy = require("@gelatonetwork/gelato-user-proxy/artifacts/GelatoUserProxy.json");
+
 
 contract("ActionHelloWorld", function(accounts) {
     /***
@@ -59,8 +61,8 @@ contract("ActionHelloWorld", function(accounts) {
 
             // Define who will pay for the transaction,
             // Gelato User Proxy
-            const gelatoUserProxyAddress = accounts[0] // "YOUR_PROXY_ADDRESS"
-            const providerModuleGelatoUserProxy = ProviderModuleGelatoUserProxy.address /// Contract address of ProviderModuleGelatoUserProxy.sol
+            const gelatoUserProxyAddress = GelatoUserProxy.address  /// ContractAddress
+            const providerModuleGelatoUserProxy = ProviderModuleGelatoUserProxy.address  /// ContractAddress
 
             /// the user directly or the developer
             const gelatoProvider = new GelatoCoreLib.GelatoProvider({
@@ -68,9 +70,14 @@ contract("ActionHelloWorld", function(accounts) {
                 module: providerModuleGelatoUserProxy,
             });
 
+            const gelatoUserProxy = await ethers.getContractAt(
+                                        GelatoCoreLib.GelatoUserProxy.abi,
+                                        gelatoUserProxyAddress
+                                    );
+
             /// Submit transaction to gelato and it will
             /// be executed when the condition is fulfilled
-            await gelatoCore.submitTask(gelatoProvider, task, 0)
+            await gelatoUserProxy.submitTask(gelatoProvider, task, 0)  // [Note]: Submit one-time task
 
         });
     }); 
