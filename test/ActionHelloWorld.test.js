@@ -45,7 +45,8 @@ contract("ActionHelloWorld", function(accounts) {
             const action = new GelatoCoreLib.Action({
                 addr: actionHelloWorld.address,                   // action address
                 data: await actionHelloWorld.action(newMessage),  // data defining trade
-                operation: Operation.Delegatecall
+                operation: GelatoCoreLib.Operation.Call           // [Note]: For EOA wallet
+                //operation: GelatoCoreLib.Operation.Delegatecall // [Note]: For smart contract wallet
             });
 
             /// Combine condition + action to a task
