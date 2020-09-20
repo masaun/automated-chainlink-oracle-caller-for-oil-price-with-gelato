@@ -12,6 +12,9 @@ contract OilPriceOracle {
      * Network: Rinkeby
      * Aggregator: ETH/USD
      * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     *
+     * Aggregator: Oil/USD
+     * Address: 0x6292aA9a6650aE14fbf974E5029f36F95a1848Fd
      */
     constructor() public {
         priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
