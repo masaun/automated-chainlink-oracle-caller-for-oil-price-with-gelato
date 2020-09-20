@@ -7,16 +7,23 @@ let OilPriceOracle = {};
 OilPriceOracle = require("../build/contracts/OilPriceOracle.json");
 
 const oilPriceOracleABI = OilPriceOracle.abi;
-const oilPriceOracleAddr = "0x22aaeEd33532cE99C6601C3A49ae5384727E5Dd0";
+const oilPriceOracleAddr = "0x22aaeEd33532cE99C6601C3A49ae5384727E5Dd0";   /// [Note]: Need to send ETH and LINK at first into this contract address
 //const oilPriceOracleAddr = OilPriceOracle.address;
 const oilPriceOracle = new web3.eth.Contract(oilPriceOracleABI, oilPriceOracleAddr);
 
 
-async function getLatestPrice() {
-    let roundData = await oilPriceOracle.methods.getLatestPrice().call();
-    console.log("Latest Round Data", roundData);
+async function callTx() {
+    async function getLatestPrice() {
+        let roundData = await oilPriceOracle.methods.getLatestPrice().call();
+        console.log("Latest Round Data", roundData);
+
+        return roundData;
+    }
+
+    let roundData = await getLatestPrice();
 }
-getLatestPrice()
+
+callTx()
 
 
 // oilPriceOracle.methods.getLatestPrice().call()
