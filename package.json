@@ -9,6 +9,8 @@
     "test:local": "truffle test ./test/* --network local",
     "test:goerli": "truffle test ./test/* --network goerli",
     "test:rinkeby": "truffle test ./test/* --network rinkeby",
+    "test:rinkeby-oil": "truffle test ./test/OilPriceOracle.test.js --network rinkeby",
+
     "start-blank": "rm -rf client/src && cp -rf barebones/src client/",
     "client": "cd client && npm run start",
     "console:ropsten": "truffle console --network ropsten",
@@ -23,7 +25,7 @@
     "migrate:rinkeby": "truffle migrate --reset --network rinkeby",
     "compile:goerli": "truffle compile --reset --network goerli",
     "migrate:goerli": "truffle migrate --reset --network goerli",
-    "migrate:local": "truffle migrate --reset --network local"
+    "migrate:local": "truffle migrate --reset --network local"    
   },
   "author": "masaun",
   "license": "MIT",

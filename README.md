@@ -29,15 +29,24 @@ $ npm run migrate:local
 &nbsp;
 
 ## 【Test】
+- For all test
 ```
 $ npm run test:local
 ```
 
+<br>
+
+- For test of OilPriceOracle.sol
+```
+$ npm run test:rinkeby-oil
+```
+
+<br>
 
 ***
 
 ## 【References】
-- [Chainlink💹]
+- [Chainlink 💹]
   - Price Feed (Sample code)  
     https://docs.chain.link/docs/get-the-latest-price  
   
