@@ -11,11 +11,13 @@
 ***
 
 ## 【Setup】
-### 
-1. Run ganache-cli
+1. Npm install
 ```
-$ ganache-cli -d
+$ npm install
 ```
+
+<br>
+
 
 2. Migrate
 ```
@@ -42,6 +44,10 @@ $ npm run test:rinkeby
   
   - Contract Address (Rinkeby): `Oil/USD`  
     https://docs.chain.link/docs/reference-contracts#rinkeby  
+
+  - ChainLink Hackathon：
+    https://hack.chain.link
+    https://chainlink-hackathon.devpost.com
 
 <br>
 
