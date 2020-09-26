@@ -35,20 +35,20 @@ contract("ActionOilPriceOracle", function(accounts) {
 
     /* Website: https://gelato.network/  */
     describe("Action via Gelato🍦 from Website", () => {
-        it('Call OilPriceOracle.addNewGreetMessage via UserProxy (Using .Call)', async () => {
+        it('Call OilPriceOracle.getLatestPrice via UserProxy (Using .Call)', async () => {
 
             /// [In progress]: https://gelato.network/
 
             /// Define a Condition => When the transaction should execute
             const condition = new GelatoCoreLib.Condition({
                 inst: actionOilPriceOracle.address,             // condition address
-                data: await actionOilPriceOracle.action(),  // e.g. every 5 minutes
+                data: await actionOilPriceOracle.action(),      // e.g. every 5 minutes
             });
 
             /// Define an action => What that transaction should do
             const action = new GelatoCoreLib.Action({
                 addr: actionOilPriceOracle.address,                   // action address
-                data: await actionOilPriceOracle.action(),  // data defining trade
+                data: await actionOilPriceOracle.action(),        // data defining trade
                 operation: GelatoCoreLib.Operation.Call           // [Note]: For EOA wallet
                 //operation: GelatoCoreLib.Operation.Delegatecall // [Note]: For smart contract wallet
             });
