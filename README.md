@@ -28,7 +28,7 @@ $ npm run migrate:local
 
 &nbsp;
 
-## 【Test】
+## 【Test】(※ Using `Rinkeby-testnet` )
 - For all test
 ```
 $ npm run test:local

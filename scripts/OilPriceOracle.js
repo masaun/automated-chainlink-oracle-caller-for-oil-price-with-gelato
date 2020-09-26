@@ -12,30 +12,34 @@ const oilPriceOracleABI = OilPriceOracle.abi;
 const oilPriceOracleAddr = OilPriceOracle["networks"]["4"]["address"];       /// [Note]: Need to send ETH and LINK at first into this contract address
 const oilPriceOracle = new web3.eth.Contract(oilPriceOracleABI, oilPriceOracleAddr);
 
+//const priceFeed = new web3.eth.Contract(aggregatorV3InterfaceABI, addr);
+oilPriceOracle.methods.getLatestPrice().call()
+    .then((roundData) => {
+        // Do something with roundData
+        console.log("Latest Round Data", roundData)
+    });
 
-async function callTx() {
-    async function getLatestPrice() {
-        let roundData;
-        try {
-            roundData = await oilPriceOracle.methods.getLatestPrice().call();
-            console.log("=== Latest Round Data 1 ===", roundData);
-        } catch(e) {
-            console.log('=== e ===', e);
-            return String(e);
-        }
 
-        return roundData;
-    }
 
-    let _roundData = await getLatestPrice();
-    return _roundData;
-}
 
-let roundData = callTx()
-console.log("=== Latest Round Data 2 ===", roundData);
+// async function callTx() {
+//     async function getLatestPrice() {
+//         let roundData;
+//         try {
+//             roundData = await oilPriceOracle.methods.getLatestPrice().call();
+//             console.log("=== Latest Round Data 1 ===", roundData);
+//         } catch(e) {
+//             console.log('=== e ===', e);
+//             return String(e);
+//         }
 
-// oilPriceOracle.methods.getLatestPrice().call()
-//     .then((roundData) => {
-//         // Do something with roundData
-//         console.log("Latest Round Data", roundData)
-//     });
+//         return roundData;
+//     }
+
+//     let _roundData = await getLatestPrice();
+//     return _roundData;
+// }
+
+// let roundData = callTx()
+// console.log("=== Latest Round Data 2 ===", roundData);
+
