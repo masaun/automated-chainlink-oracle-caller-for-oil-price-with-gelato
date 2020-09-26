@@ -1,21 +1,17 @@
-# Automated Chainlink Oracle Caller with Gelato🍦
-
+# Automated Chainlink Oracle Caller for Oil Price with Gelato🍦
 
 ***
-## 【Introduction of Automated Chainlink Oracle Caller with Gelato🍦】
-
-
-&nbsp;
-
-## 【User Flow】
-
+## 【Introduction of Automated Chainlink Oracle Caller for Oil Price with Gelato🍦】
+- This is the smart contract for retriving oil price every specified minutes automatically.
+  - This smart contract will bring the way of commodity price into commodity related DeFi product in the future. 
+  - This smart contract utilize Gelato for realizing automation for executing smart contract.
 
 &nbsp;
 
 ***
 
 ## 【Setup】
-### Setup wallet by using Metamask
+### 
 1. Run ganache-cli
 ```
 $ ganache-cli -d
@@ -23,40 +19,17 @@ $ ganache-cli -d
 
 2. Migrate
 ```
-$ npm run migrate:local
+$ npm run migrate:rinkeby
 ```
 
 &nbsp;
 
-## 【Test】(※ Using `Local network` or `Rinkeby test network` )
-- Testing for `Local network`
-```
-$ npm run test:local
-```
-
-<br>
-
+## 【Test】(※ `Rinkeby test network` )
 - Testing for `Rinkeby test network`
 ```
 $ npm run test:rinkeby
 ```
 
-<br>
-
-
-- Testing for the OilOracle related files only in `Rinkeby test network`
-```
-$ npm run test:rinkeby-oil
-```
-
-
-<br>
-<br>
-
-- For test of OilPriceOracle.sol
-```
-$ npm run test:rinkeby-oil
-```
 
 <br>
 

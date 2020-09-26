@@ -4,8 +4,8 @@ const web3 = new Web3("https://rinkeby.infura.io/v3/34ed41c4cf28406885f032930d67
 //const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
 /// My contract
-const ActionHelloWorld = artifacts.require("ActionHelloWorld");
-const HelloWorld = artifacts.require("HelloWorld");
+const ActionOilPriceOracle = artifacts.require("ActionOilPriceOracle");
+const OilPriceOracle = artifacts.require("OilPriceOracle");
 
 /// Gelato
 const ethers = require("ethers");  /// [Notice]: ethers.js version must be more thant v5.0.0
@@ -14,42 +14,41 @@ const ProviderModuleGelatoUserProxy = require("@gelatonetwork/gelato-user-proxy"
 const GelatoUserProxy = require("@gelatonetwork/gelato-user-proxy/artifacts/GelatoUserProxy.json");
 
 
-contract("ActionHelloWorld", function(accounts) {
+contract("ActionOilPriceOracle", function(accounts) {
     /***
      * @notice - Global variable
      **/
-    let actionHelloWorld;
+    let actionOilPriceOracle;
 
     /***
      * @notice - Setup
      **/
     describe("Setup", () => {
-        it('Setup ActionHelloWorld contract instance', async () => {
+        it('Setup ActionOilPriceOracle contract instance', async () => {
             // Get the contract instance.
-            actionHelloWorld = await ActionHelloWorld.deployed();
+            actionOilPriceOracle = await ActionOilPriceOracle.deployed();
         });
 
-        console.log('=== actionHelloWorld ===', actionHelloWorld);
+        console.log('=== actionOilPriceOracle ===', actionOilPriceOracle);
     });
 
 
     /* Website: https://gelato.network/  */
     describe("Action via Gelato🍦 from Website", () => {
-        it('Call HelloWorld.addNewGreetMessage via UserProxy (Using .Call)', async () => {
-            const newMessage = 'Hello!!'
+        it('Call OilPriceOracle.getLatestPrice via UserProxy (Using .Call)', async () => {
 
             /// [In progress]: https://gelato.network/
 
             /// Define a Condition => When the transaction should execute
             const condition = new GelatoCoreLib.Condition({
-                inst: actionHelloWorld.address,             // condition address
-                data: await actionHelloWorld.action(newMessage),  // e.g. every 5 minutes
+                inst: actionOilPriceOracle.address,             // condition address
+                data: await actionOilPriceOracle.action(),      // e.g. every 5 minutes
             });
 
             /// Define an action => What that transaction should do
             const action = new GelatoCoreLib.Action({
-                addr: actionHelloWorld.address,                   // action address
-                data: await actionHelloWorld.action(newMessage),  // data defining trade
+                addr: actionOilPriceOracle.address,                   // action address
+                data: await actionOilPriceOracle.action(),        // data defining trade
                 operation: GelatoCoreLib.Operation.Call           // [Note]: For EOA wallet
                 //operation: GelatoCoreLib.Operation.Delegatecall // [Note]: For smart contract wallet
             });
