@@ -15,7 +15,7 @@ contract ActionOilPriceOracle is GelatoActionsStandard {
     OilPriceOracle public immutable oilPriceOracle;
 
     constructor(OilPriceOracle _oilPriceOracle) public { 
-        oilPriceOracle = _oilPriceOracle;
+        oilPriceOracle = OilPriceOracle(_oilPriceOracle);
     }
 
     // ======= ACTION IMPLEMENTATION DETAILS =========
