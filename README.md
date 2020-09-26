@@ -3,19 +3,21 @@
 ***
 ## 【Introduction of Automated Chainlink Oracle Caller for Oil Price with Gelato🍦】
 - This is the smart contract for retriving oil price every specified minutes automatically.
-  - This smart contract will bring the way of commodity price into commodity related DeFi product in the future. 
-  - This smart contract utilize Gelato for realizing automation for executing smart contract.
+  - This smart contract will bring the way of commodity price into commodity related DeFi product in the future. (This smart contract assume that it is utilized bycommodity related DeFi product in the future)
+  - This smart contract utilize the Chainlink for retriving oil price and the Gelato for realizing automation for executing smart contract.
 
 &nbsp;
 
 ***
 
 ## 【Setup】
-### 
-1. Run ganache-cli
+1. Npm install
 ```
-$ ganache-cli -d
+$ npm install
 ```
+
+<br>
+
 
 2. Migrate
 ```
@@ -40,8 +42,15 @@ $ npm run test:rinkeby
   - Price Feed (Sample code)  
     https://docs.chain.link/docs/get-the-latest-price  
   
+  - Price Feed (GUI)
+    https://feeds.chain.link/
+
   - Contract Address (Rinkeby): `Oil/USD`  
     https://docs.chain.link/docs/reference-contracts#rinkeby  
+
+  - ChainLink Hackathon：
+    https://hack.chain.link
+    https://chainlink-hackathon.devpost.com
 
 <br>
 
