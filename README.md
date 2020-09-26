@@ -28,12 +28,29 @@ $ npm run migrate:local
 
 &nbsp;
 
-## 【Test】(※ Using `Rinkeby-testnet` )
-- For all test
+## 【Test】(※ Using `Local network` or `Rinkeby test network` )
+- Testing for `Local network`
 ```
 $ npm run test:local
 ```
 
+<br>
+
+- Testing for `Rinkeby test network`
+```
+$ npm run test:rinkeby
+```
+
+<br>
+
+
+- Testing for the OilOracle related files only in `Rinkeby test network`
+```
+$ npm run test:rinkeby-oil
+```
+
+
+<br>
 <br>
 
 - For test of OilPriceOracle.sol
