@@ -1,11 +1,12 @@
 /// Using local network
 const Web3 = require('web3');
-const web3 = new Web3("https://rinkeby.infura.io/v3/34ed41c4cf28406885f032930d670036");
+const web3 = new Web3('https://rinkeby.infura.io/v3/' + process.env.INFURA_KEY);
+//const web3 = new Web3("https://rinkeby.infura.io/v3/34ed41c4cf28406885f032930d670036");
 //const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
-/// My contract
-const ActionOilPriceOracle = artifacts.require("ActionOilPriceOracle");
-const OilPriceOracle = artifacts.require("OilPriceOracle");
+/// Create contract instance of ActionOilPriceOracle.sol
+let ActionOilPriceOracle = {};
+ActionOilPriceOracle = require("../../build/contracts/ActionOilPriceOracle.json");
 
 /// Gelato
 const ethers = require("ethers");  /// [Notice]: ethers.js version must be more thant v5.0.0
@@ -25,8 +26,15 @@ contract("ActionOilPriceOracle", function(accounts) {
      **/
     describe("Setup", () => {
         it('Setup ActionOilPriceOracle contract instance', async () => {
-            // Get the contract instance.
-            actionOilPriceOracle = await ActionOilPriceOracle.deployed();
+            // Get the contract instance.  (Using ethers.js)
+            const actionOilPriceOracleABI = ActionOilPriceOracle.abi;
+            const actionOilPriceOracleAddr = ActionOilPriceOracle["networks"]["4"]["address"];
+            //const oilPriceOracle = new web3.eth.Contract(oilPriceOracleABI, oilPriceOracleAddr);
+            actionOilPriceOracle = await ethers.getContractAt(
+                                        actionOilPriceOracleABI,
+                                        actionOilPriceOracleAddr
+                                    );
+
         });
 
         console.log('=== actionOilPriceOracle ===', actionOilPriceOracle);
