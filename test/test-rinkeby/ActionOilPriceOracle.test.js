@@ -4,9 +4,9 @@ const web3 = new Web3('https://rinkeby.infura.io/v3/' + process.env.INFURA_KEY);
 //const web3 = new Web3("https://rinkeby.infura.io/v3/34ed41c4cf28406885f032930d670036");
 //const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
-/// My contract
-const ActionOilPriceOracle = artifacts.require("ActionOilPriceOracle");
-const OilPriceOracle = artifacts.require("OilPriceOracle");
+/// Create contract instance of ActionOilPriceOracle.sol
+let ActionOilPriceOracle = {};
+ActionOilPriceOracle = artifacts.require("../../build/contracts/ActionOilPriceOracle.json");
 
 /// Gelato
 const ethers = require("ethers");  /// [Notice]: ethers.js version must be more thant v5.0.0
