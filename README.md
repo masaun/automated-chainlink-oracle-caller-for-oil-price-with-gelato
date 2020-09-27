@@ -27,7 +27,13 @@ $ npm run migrate:rinkeby
 &nbsp;
 
 ## 【Test】(※ `Rinkeby test network` )
-- Testing for `Rinkeby test network`
+- Testing for only OilPriceOracle contract
+```
+$ npm run test:rinkeby-oil
+```
+
+
+- Testing for all contract
 ```
 $ npm run test:rinkeby
 ```
