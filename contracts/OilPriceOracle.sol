@@ -15,10 +15,12 @@ contract OilPriceOracle {
      *
      * Aggregator: Oil/USD
      * Address: 0x6292aA9a6650aE14fbf974E5029f36F95a1848Fd
+     *
+     * Reference: https://docs.chain.link/docs/reference-contracts#rinkeby
      */
     constructor() public {
-        //priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
-        oilPriceFeed = AggregatorV3Interface(0x6292aA9a6650aE14fbf974E5029f36F95a1848Fd);
+        //priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);   /// ETH/USD
+        oilPriceFeed = AggregatorV3Interface(0x6292aA9a6650aE14fbf974E5029f36F95a1848Fd);  /// Oil/USD
     }
 
     /**

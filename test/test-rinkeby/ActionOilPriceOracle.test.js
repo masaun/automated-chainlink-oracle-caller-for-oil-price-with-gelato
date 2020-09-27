@@ -1,6 +1,7 @@
 /// Using local network
 const Web3 = require('web3');
-const web3 = new Web3("https://rinkeby.infura.io/v3/34ed41c4cf28406885f032930d670036");
+const web3 = new Web3('https://rinkeby.infura.io/v3/' + process.env.INFURA_KEY);
+//const web3 = new Web3("https://rinkeby.infura.io/v3/34ed41c4cf28406885f032930d670036");
 //const web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8545'));
 
 /// My contract
