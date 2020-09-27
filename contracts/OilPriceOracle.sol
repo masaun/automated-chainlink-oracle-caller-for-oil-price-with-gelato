@@ -27,7 +27,7 @@ contract OilPriceOracle {
     function getLatestPrice() public view returns (int) {
         (
             uint80 roundID, 
-            int price,
+            int oilPrice,
             uint startedAt,
             uint timeStamp,
             uint80 answeredInRound

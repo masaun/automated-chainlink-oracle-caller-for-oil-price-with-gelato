@@ -42,15 +42,15 @@ $ npm run test:rinkeby
   - Price Feed (Sample code)  
     https://docs.chain.link/docs/get-the-latest-price  
   
-  - Price Feed (GUI)
-    https://feeds.chain.link/
+  - Price Feed (GUI)  
+    https://feeds.chain.link/  
 
   - Contract Address (Rinkeby): `Oil/USD`  
-    https://docs.chain.link/docs/reference-contracts#rinkeby  
+    https://docs.chain.link/docs/reference-contracts#rinkeby   
 
   - ChainLink Hackathon：
-    https://hack.chain.link
-    https://chainlink-hackathon.devpost.com
+    https://hack.chain.link  
+    https://chainlink-hackathon.devpost.com  
 
 <br>
 
